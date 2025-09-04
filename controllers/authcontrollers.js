@@ -82,7 +82,7 @@ const loginUser = async (req, res) => {
         // campar password
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            res.status(401).json({
+            return res.status(401).json({
                 message: "User Not Found Invalid user "
             });
         }
@@ -91,10 +91,10 @@ const loginUser = async (req, res) => {
             name: user.name,
             email: user.email,
             role: user.role,
-            profileImgUrl: user.profileImageUrl,
+            profileImgUrl: user.profileImgUrl,
             token: generateToken(user._id),
         });
-    } catch {
+    } catch (error){
         res.status(500).json({
             message: "Server error",
             error: error.message
@@ -147,7 +147,7 @@ const updateUserprofile = async (req, res) => {
             token: generateToken(updatedUser._id),
         });
 
-    } catch {
+    } catch(error) {
         res.status(500).json({
             message: "Server error",
             error: error.message

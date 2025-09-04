@@ -40,3 +40,7 @@ app.listen(PORT,()=>
     console.log(`server running on port ${PORT}`)
 );
 
+
+// git add .
+// git commit -m "jfdsj"
+// git push origin main
